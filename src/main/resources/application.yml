@@ -1,0 +1,37 @@
+# The name of this app:
+spring.application.name: GiftCard-App-${spring.profiles.active}
+server.port: 8081
+
+# Debugging on
+logging.level.io.axoniq.demo: debug
+
+# We look for Axon Server locally, unless we find a PCF Binding for AxonServer
+axon.axonserver.servers: ${vcap.services.AxonServer.credentials.uri:localhost}
+
+# The default profiles are "all of them"
+spring.profiles.active: command,query
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: study
+    password: 1234
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          default_schema: study
+    devtools:
+      livereload:
+        enabled: true
+      freemarker:
+        cache: true
+    logging:
+      level:
+        com: debug
+
+## Management endpoints inclusion
+#management.endpoint.health.show-details=always
+#management.endpoints.web.exposure.include=*

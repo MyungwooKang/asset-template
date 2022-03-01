@@ -1,0 +1,7 @@
+server.port: 8083
+
+# Configuring the "card-summary" processing group to use two threads and two segments
+axon.eventhandling.processors.asset-task:
+  thread-count: 4
+  mode: subscribing
+  initial-segment-count: 4
